@@ -243,7 +243,7 @@ const SavingTracker = () => {
     const fetchData = async () => {
       try {
         // Fetch balance
-        const balanceResponse = await fetch("https://saving-tracker.onrender.com");
+        const balanceResponse = await fetch("https://saving-tracker.onrender.com/balance");
         if (!balanceResponse.ok) {
           throw new Error(`HTTP error! status: ${balanceResponse.status}`);
         }
@@ -251,7 +251,7 @@ const SavingTracker = () => {
         setSavings(balanceData.balance || 0);
 
         // Fetch transactions
-        const transactionsResponse = await fetch("https://saving-tracker.onrender.com");
+        const transactionsResponse = await fetch("https://saving-tracker.onrender.com/transactions");
         if (!transactionsResponse.ok) {
           throw new Error(`HTTP error! status: ${transactionsResponse.status}`);
         }
@@ -288,7 +288,7 @@ const SavingTracker = () => {
       const parsedAmount = parseFloat(amount);
       
       try {
-        const response = await fetch("https://saving-tracker.onrender.com", {
+        const response = await fetch("https://saving-tracker.onrender.com/add-savings", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
